@@ -2,5 +2,47 @@
 
 /**
  * @file
- * Drupal needs this blank file.
+ * Hook implementations for the count_up module.
  */
+
+function _count_up_add_form_parents(&$element, $form_key = NULL, $parents_parents = []) {
+  if (!isset($element['#parents']) && $form_key) {
+    $element['#parents'] = array_merge($parents_parents, [$form_key]);
+  }
+  foreach (element_children($element) as $form_key) {
+    _count_up_add_form_parents($element[$form_key], $form_key, $element['#parents']);
+  }
+}
+
+/**
+ * Implements hook_field_widget_form_alter().
+ */
+function count_up_field_widget_form_alter(&$element, &$form_state, $context) {
+  if ($context['field']['field_name'] != 'count_up') {
+    return;
+  }
+  _count_up_add_form_parents($element);
+
+  $visibility_id = drupal_html_id('count_up-visibility');
+  $visibility_state['#states']['visible']["#$visibility_id"]['checked'] = TRUE;
+  $element['count_up_visibility']['und']['#id'] = $visibility_id;
+  foreach (['initial_time', 'initial_value', 'increment', 'interval', 'description'] as $f) {
+    $element["count_up_$f"] += $visibility_state;
+  }
+  $element['count_up_initial_time'][LANGUAGE_NONE][0]['#count_up_container'] = TRUE;
+  $element['#attributes']['class'][] = 'field-group-heading';
+}
+
+/**
+ * Implements hook_date_combo_process_alter().
+ *
+ * Render our datetime elements as containers.
+ */
+function count_up_date_combo_process_alter(&$element, $form_state, $context) {
+  if (!empty($element['#count_up_container'])) {
+    $element['#theme_wrappers'] = ['container'];
+    $element['value'] += [
+      '#title' => $element['#title'],
+    ];
+  }
+}
