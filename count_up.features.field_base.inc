@@ -89,7 +89,7 @@ function count_up_field_default_field_bases() {
         'hour' => 'hour',
         'minute' => 'minute',
         'month' => 'month',
-        'second' => 'second',
+        'second' => 0,
         'year' => 'year',
       ),
       'timezone_db' => 'UTC',
