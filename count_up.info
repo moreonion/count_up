@@ -1,0 +1,7 @@
+name = count_up
+core = 7.x
+package = Features
+dependencies[] = features
+dependencies[] = field_collection
+features[features_api][] = api:2
+features[field_base][] = field_count_up
