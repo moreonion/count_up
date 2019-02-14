@@ -6,6 +6,39 @@
  */
 
 /**
+ * Implements hook_libraries_info().
+ */
+function count_up_libraries_info() {
+  $libraries['odometer'] = [
+    'name' => 'odometer',
+    'vendor url' => 'http://github.hubspot.com/odometer/',
+    'download url' => 'https://github.com/HubSpot/odometer/releases',
+    'version arguments' => [
+      'file' => 'package.json',
+      'pattern' => '"(\d+\.\d+\.\d+)"',
+      'lines' => 5,
+    ],
+    'files' => [
+      'css' => ['themes/odometer-theme-minimal.css' => []],
+      'js' => ['odometer.min.js' => ['requires_jquery' => FALSE]],
+    ],
+  ];
+  return $libraries;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function count_up_theme() {
+  $theme['count_up'] = [
+    'render element' => 'element',
+    'template' => 'count_up',
+    'file' => 'count_up.theme.inc',
+  ];
+  return $theme;
+}
+
+/**
  * Implements hook_field_widget_form_alter().
  */
 function count_up_field_widget_form_alter(&$element, &$form_state, $context) {
@@ -38,4 +71,51 @@ function count_up_date_combo_process_alter(&$element, $form_state, $context) {
       '#title' => $element['#title'],
     ];
   }
+}
+
+/**
+ * Implements hook_field_attach_view_alter().
+ *
+ * Render the count_up field instead of a generic field collection.
+ */
+function count_up_field_attach_view_alter(&$output, $context) {
+  if (isset($output['count_up'])) {
+    module_load_include('theme.inc', 'entity', 'theme/entity');
+    $element = reset($output['count_up'][0]['entity']['field_collection_item']);
+    $variables['elements'] = &$element;
+    template_preprocess_entity($variables);
+
+    $entity = entity_metadata_wrapper('field_collection_item', $element['#entity']);
+    $count_up = [
+      '#theme' => 'count_up',
+      '#increment' => $entity->count_up_increment->value(),
+      '#interval' => $entity->count_up_interval->value(),
+      '#initial_value' => $entity->count_up_initial_value->value(),
+      '#initial_time' => $entity->count_up_initial_time->value(),
+      '#pre_render' => ['count_up_pre_render'],
+    ] + $variables['content'];
+    $output['count_up'][0] = $count_up;
+  }
+}
+
+/**
+ * Pre render function for count_up elements.
+ *
+ * Generates drupal settings and adds the odometer settings.
+ */
+function count_up_pre_render($element) {
+  $element += [
+    '#odometer_settings' => [],
+    '#update_interval' => 2000,
+  ];
+  $element['#odometer_settings'] += [
+    'duration' => 2000,
+  ];
+  $element['#attached']['libraries_load'][] = ['odometer'];
+  if (!isset($element['#id'])) {
+    $element['#id'] = drupal_html_id('count_up');
+  }
+  $path = drupal_get_path('module', 'count_up');
+  $element['#attached']['js']["$path/count_up.js"]['type'] = 'file';
+  return $element;
 }
