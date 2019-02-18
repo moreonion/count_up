@@ -12,45 +12,6 @@ function count_up_field_default_field_instances() {
   $field_instances = array();
 
   // Exported field_instance:
-  // 'field_collection_item-count_up-count_up_description'.
-  $field_instances['field_collection_item-count_up-count_up_description'] = array(
-    'bundle' => 'count_up',
-    'default_value' => array(
-      0 => array(
-        'value' => '',
-      ),
-    ),
-    'deleted' => 0,
-    'description' => 'Additional text explaining what is being counted.',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'field_collection_item',
-    'field_name' => 'count_up_description',
-    'label' => 'Description',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 5,
-    ),
-  );
-
-  // Exported field_instance:
   // 'field_collection_item-count_up-count_up_increment'.
   $field_instances['field_collection_item-count_up-count_up_increment'] = array(
     'bundle' => 'count_up',
@@ -209,6 +170,49 @@ function count_up_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instan:
+  // 'field_collection_item-count_up-field_count_up_title'.
+  $field_instances['field_collection_item-count_up-count_up_title'] = array(
+    'bundle' => 'count_up',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => array(
+      0 => array(
+        'value' => '',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Big introduction text that tells the user what is being counted.',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'count_up_title',
+    'label' => 'Title',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 6,
+    ),
+  );
+
   // Exported field_instance:
   // 'field_collection_item-count_up-count_up_visibility'.
   $field_instances['field_collection_item-count_up-count_up_visibility'] = array(
@@ -248,8 +252,7 @@ function count_up_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Additional text explaining what is being counted.');
-  t('Description');
+  t('Big introduction text that tells the user what is being counted.');
   t('Increment');
   t('Initial time');
   t('Initial value');
@@ -257,6 +260,7 @@ function count_up_field_default_field_instances() {
   t('Point in time where counter’s value equals the <em>Initial value</em>.');
   t('Show a counter on this page.');
   t('The value increases by the <em>Increment</em> for every interval that has passed.');
+  t('Title');
 
   return $field_instances;
 }

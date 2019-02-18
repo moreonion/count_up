@@ -38,25 +38,6 @@ function count_up_field_default_field_bases() {
     'type' => 'field_collection',
   );
 
-  // Exported field_base: 'count_up_description'.
-  $field_bases['count_up_description'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'count_up_description',
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(),
-    'translatable' => 0,
-    'type' => 'text_long',
-  );
-
   // Exported field_base: 'count_up_increment'.
   $field_bases['count_up_increment'] = array(
     'active' => 1,
@@ -129,6 +110,28 @@ function count_up_field_default_field_bases() {
     'settings' => array(),
     'translatable' => 0,
     'type' => 'number_integer',
+  );
+
+  // Exported field_base: 'count_up_title'.
+  $field_bases['count_up_title'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'count_up_title',
+    'global_block_settings' => 1,
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 511,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
   );
 
   // Exported field_base: 'count_up_visibility'.
