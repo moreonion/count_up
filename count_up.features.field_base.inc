@@ -18,6 +18,7 @@ function count_up_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'count_up',
+    'global_block_settings' => 2,
     'indexes' => array(
       'revision_id' => array(
         0 => 'revision_id',
