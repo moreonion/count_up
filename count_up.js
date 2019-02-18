@@ -10,7 +10,7 @@ Drupal.behaviors.count_up = {
       var o = new Odometer($.extend({}, {
         el: element,
         value: calcVal(),
-      }, s.odometer_settings));;
+      }, s.odometer_settings));
       var update = function() { 
         o.update(calcVal());
         window.setTimeout(update, s.update_interval_ms);
