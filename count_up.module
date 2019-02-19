@@ -2,6 +2,13 @@
 
 /**
  * @file
+ * Code for the count_up feature.
+ */
+
+include_once 'count_up.features.inc';
+
+/**
+ * @file
  * Hook implementations for the count_up module.
  */
 

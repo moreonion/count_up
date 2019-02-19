@@ -170,8 +170,7 @@ function count_up_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instan:
-  // 'field_collection_item-count_up-field_count_up_title'.
+  // Exported field_instance: 'field_collection_item-count_up-count_up_title'.
   $field_instances['field_collection_item-count_up-count_up_title'] = array(
     'bundle' => 'count_up',
     'custom_add_another' => '',
