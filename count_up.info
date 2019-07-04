@@ -28,3 +28,4 @@ features[field_instance][] = field_collection_item-count_up-count_up_interval
 features[field_instance][] = field_collection_item-count_up-count_up_title
 features[field_instance][] = field_collection_item-count_up-count_up_visibility
 features[variable][] = cck_blocks_count_up_block_availability
+stylesheets[all][] = count_up.css
