@@ -181,7 +181,7 @@ function count_up_field_default_field_instances() {
       ),
     ),
     'deleted' => 0,
-    'description' => 'Big introduction text that tells the user what is being counted.',
+    'description' => 'Big heading above the counter.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -209,6 +209,48 @@ function count_up_field_default_field_instances() {
       ),
       'type' => 'text_textfield',
       'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance: 'field_collection_item-count_up-count_up_unit'.
+  $field_instances['field_collection_item-count_up-count_up_unit'] = array(
+    'bundle' => 'count_up',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => array(
+      0 => array(
+        'value' => '',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Unit of measurement that tells the user what is being counted.',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 7,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'count_up_unit',
+    'label' => 'Unit',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 7,
     ),
   );
 
@@ -251,7 +293,7 @@ function count_up_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Big introduction text that tells the user what is being counted.');
+  t('Big heading above the counter.');
   t('Increment');
   t('Initial time');
   t('Initial value');
@@ -260,6 +302,8 @@ function count_up_field_default_field_instances() {
   t('Show a counter on this page.');
   t('The value increases by the <em>Increment</em> for every interval that has passed.');
   t('Title');
+  t('Unit');
+  t('Unit of measurement that tells the user what is being counted.');
 
   return $field_instances;
 }
