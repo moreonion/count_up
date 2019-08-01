@@ -134,6 +134,28 @@ function count_up_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'count_up_unit'.
+  $field_bases['count_up_unit'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'count_up_unit',
+    'global_block_settings' => 1,
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 100,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
   // Exported field_base: 'count_up_visibility'.
   $field_bases['count_up_visibility'] = array(
     'active' => 1,
