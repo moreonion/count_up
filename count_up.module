@@ -87,6 +87,15 @@ function count_up_date_combo_process_alter(&$element, $form_state, $context) {
  */
 function count_up_field_attach_view_alter(&$output, $context) {
   if (isset($output['count_up'])) {
+    // Check if the field should be displayed.
+    $count_up_field = field_get_items('node', $context['entity'], 'count_up');
+    $item = field_collection_item_load(reset($count_up_field)['value']);
+    $visibility_field = field_get_items('field_collection_item', $item, 'count_up_visibility');
+    if ($visibility_field && reset($visibility_field)['value'] == 0) {
+      unset($output['count_up']);
+      return;
+    }
+
     module_load_include('theme.inc', 'entity', 'theme/entity');
     $element = reset($output['count_up'][0]['entity']['field_collection_item']);
     $variables['elements'] = &$element;
