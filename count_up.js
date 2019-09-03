@@ -2,7 +2,7 @@
 
 Drupal.behaviors.count_up = {
   attach: function(context, settings) {
-    context.querySelectorAll('.count-up').forEach(function(element) {
+    $('.count-up', context).each(function(i, element) {
       var s = settings.count_up[element.id];
       var calcVal = function(target_ms) {
         return Math.round((target_ms / 1000 - s.initial_time) / s.interval * s.increment + s.initial_value);
